@@ -25,9 +25,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ggk*3^m@sgffn2*@#tb1r9)m%7&cgv&!-kr@91=irpzjp#w1f0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ["https://guarded-cliffs-97404.herokuapp.com/","guarded-cliffs-97404.herokuapp.com", "0.0.0.0"]
+ALLOWED_HOSTS = ["https://guarded-cliffs-97404.herokuapp.com/","guarded-cliffs-97404.herokuapp.com", "alikhundmiri.com", "www.alikhundmiri.com", "0.0.0.0"]
 
 # Application definition
 
