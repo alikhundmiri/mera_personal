@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    {{ instance.title }} | {{ block.super }}
+{% endblock %}
+{% block content %}
+    {#    {% include 'nab_bar.html' %}#}
+    <div style="margin-top:100px;"></div>
+
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ instance.title }}
+                    <small>{{ instance.get_type_work_display }}</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+
+            <div class="col-md-8">
+                {#    {% if instance.image %}#}
+                {#        <img src="{{ instance.image.url }}" class='img-responsive'>#}
+                {#    {% endif %}#}
+
+                {% if instance.image %}
+                    <img class="img-responsive" src="{{ instance.image.url }}" alt="">
+                {% else %}
+                    <img class="img-responsive" src="{% static 'lander/img/profile.png' %}" alt="">
+                {% endif %}
+            </div>
+
+            <div class="col-md-4">
+                <h3>Project Description</h3>
+                {% if instance.detail %}
+                    <p>{{ instance.detail }}</p>
+                {% else %}
+                    <p>The project <i>{{ instance.title }}</i> is being developed as {% if instance.type_work == 1 %}
+                        a website {% elif instance.type_work == 2 %}an android app {% else %} an iOS app {% endif %}for
+                        {% if instance.purpose == 1 %}personal use
+                        {% elif instance.purpose == 2 %}commercial purpose{% else %}a third party on Contract{% endif %}
+                        . The work is underway, and is expected to be pushed to production soon.<br>Various details about the project are
+                        provided below</p>
+                {% endif %}
+                <hr>
+                <h3>Project Details</h3>
+                <ul>
+                    <li><b>Project Type : </b>{{ instance.get_type_work_display }}</li>
+                    <li><b>Project Role : </b>{{ instance.get_role_display }}</li>
+                    <li><b>Project Purpose : </b>{{ instance.get_purpose_display }}</li>
+                    {% if instance.detail %}
+                        <li><b>Project Completed : </b>{{ instance.created }}</li>
+                    {% else %}
+                        <li><b>Project Completion Expected: </b>
+                            {% if instance.created|date == instance.timestamp|date %}
+                                Soon!
+                                {% else %}{{ instance.created|timeuntil }}
+                            {% endif %}</li>
+                    {% endif %}
+                    {% if instance.item_url %}
+                        <li><b>Project URL : </b><a href="{{ instance.item_url }}">Check it out</a></li>
+                    {% endif %}
+                </ul>
+            <p>For further more details, please <a href="{% url 'contact' %}">contact</a> our developer.</p>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {% if instance.youtube %}
+                    <h3>Project Video</h3>
+                    <p>if video is not available, click <a href="{{ instance.youtube }}">here</a></p>
+                    <iframe width="640" height="360" src="{{ instance.youtube }}" frameborder="0"
+                            allowfullscreen></iframe>
+                    <hr>
+                {% endif %}
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Related Projects Row -->
+        {#        <div class="row">#}
+        {##}
+        {#            <div class="col-lg-12">#}
+        {#                <h3 class="page-header">Related Projects</h3>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="col-sm-3 col-xs-6">#}
+        {#                <a href="#">#}
+        {#                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">#}
+        {#                </a>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="col-sm-3 col-xs-6">#}
+        {#                <a href="#">#}
+        {#                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">#}
+        {#                </a>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="col-sm-3 col-xs-6">#}
+        {#                <a href="#">#}
+        {#                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">#}
+        {#                </a>#}
+        {#            </div>#}
+        {##}
+        {#            <div class="col-sm-3 col-xs-6">#}
+        {#                <a href="#">#}
+        {#                    <img class="img-responsive portfolio-item" src="http://placehold.it/500x300" alt="">#}
+        {#                </a>#}
+        {#            </div>#}
+        {##}
+        {#        </div>#}
+        {#        <!-- /.row -->#}
+        {##}
+        {#        <hr>#}
+        {##}
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+{% endblock %}
