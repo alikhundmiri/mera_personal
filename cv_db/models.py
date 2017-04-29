@@ -21,33 +21,33 @@ TYPES = (
 )
 class SortManager(models.Manager):
     def iee(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 1)
     def alma(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 2)
     def achievements(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 3)
     def aoi(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 4)
     def eduActiv(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 5)
     def workip(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 6)
     def nowWork(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 7)
     def skill(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 8)
     def lectures(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 9)
     def books(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 10)
     def special(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 11)
     def competition(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 12)
     def blank1(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 13)
     def blank2(self, *args, **kwargs):
-        return super(SortManager, self).filter(cat_0 = 0)
+        return super(SortManager, self).filter(cat_0 = 14)
 
 class document_data(models.Model):
     cat_0 = models.IntegerField(choices=TYPES)

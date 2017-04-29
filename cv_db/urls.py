@@ -5,6 +5,6 @@ from .views import (
 )
 
 urlpatterns = [
-    url(r'^cv/', cv, name='cv'),
+    url(r'^$', cv, name='cv'),
     url(r'^resume/', resume, name='resume'),
 ]
