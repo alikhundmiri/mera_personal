@@ -4,13 +4,40 @@
     Curriculam Vitae | {{ block.super }}
 {% endblock %}
 {% block content %}
-    {#    INTRO#}
-    <div style="margin-top:100px;"></div>
+    
+    <div style="margin-top:200px;"></div>
+    
+    <div class="container visible-xs visible-sm">
+        <div class="col-sm-12 " align="center">
+            <img src="{% static 'images/DP_001.png' %}" class="img-responsive" alt="Ali Khundmiri, Display Picture" style="width:125px;height:159px;">
+        </div>
+        <div class="col-sm-12" align="center">
+            <h3>Curriculam Vitae <br>
+                <small>Ali <b>Khundmiri</b></small>
+            </h3>
+            <p>Nationality : <small><b>Indian</b></small></p>
+            <p>Month of Birth : <small><b>March of 1993</b></small></p>
+            <p>linguistics : <small><b>English, Hindi, Urdu, <i>Tamil <sup>*</sup>, Arabic <sup>*</sup>.</i></b></small></p>
+            <p>Twitter : <small><b><a href="https://twitter.com/SyedAliAK">@SyedAliAK</a></b></small></p>
+        </div>
+    </div>
+
+    <div class="container hidden-xs hidden-sm">
+        <div class="col-md-9" align="left">
+            <h3>Curriculam Vitae <br>
+                <small>Ali <b>Khundmiri</b></small>
+            </h3>
+            <p>Nationality : <small><b>Indian</b></small></p>
+            <p>Month of Birth : <small><b>March of 1993</b></small></p>
+            <p>linguistics : <small><b>English, Hindi, Urdu, <i>Tamil <sup>*</sup>, Arabic <sup>*</sup>.</i></b></small></p>
+            <p>Twitter : <small><b><a href="https://twitter.com/SyedAliAK">@SyedAliAK</a></b></small></p>
+        </div>
+        <div class="col-md-3" align="right">
+            <img src="{% static 'images/DP_001.png' %}" class="img-responsive" alt="Ali Khundmiri, Display Picture" style="width:145px;height:187px;">
+        </div>        
+    </div>
 
     <div class="container">
-        <h3>Curriculam Vitae
-            <small>Ali <b>Khundmiri</b></small>
-        </h3>
         <br>
         {% if experience %}
             <h3>Experience</h3>
