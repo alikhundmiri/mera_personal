@@ -51,15 +51,15 @@ class SortManager(models.Manager):
 
 class document_data(models.Model):
     cat_0 = models.IntegerField(choices=TYPES)
-    cat_1 = models.TextField(blank=True, null=True, default="")
-    cat_2 = models.TextField(blank=True, null=True, default="")
-    cat_3 = models.TextField(blank=True, null=True, default="")
-    cat_4 = models.TextField(blank=True, null=True, default="")
-    cat_5 = models.TextField(blank=True, null=True, default="")
-    cat_6 = models.TextField(blank=True, null=True, default="")
-    cat_7 = models.TextField(blank=True, null=True, default="")
-    cat_8 = models.TextField(blank=True, null=True, default="")
-    cat_9 = models.TextField(blank=True, null=True, default="")
+    cat_1 = models.CharField(max_length=100, blank=True, null=True, default="")
+    cat_2 = models.CharField(max_length=100, blank=True, null=True, default="")
+    cat_3 = models.CharField(max_length=100, blank=True, null=True, default="")
+    cat_4 = models.CharField(max_length=100, blank=True, null=True, default="")
+    cat_5 = models.CharField(max_length=100, blank=True, null=True, default="")
+    cat_6 = models.CharField(max_length=100, blank=True, null=True, default="")
+    cat_7 = models.CharField(max_length=100, blank=True, null=True, default="")
+    cat_8 = models.CharField(max_length=100, blank=True, null=True, default="")
+    cat_9 = models.CharField(max_length=100, blank=True, null=True, default="")
 
     time_of_record = models.DateField(auto_now=False, auto_now_add=False)
 
