@@ -33,7 +33,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True)
     title = models.CharField(max_length=300)
     detail = models.TextField(max_length=23000)
-    tags = models.ManyToManyField(taggers)
+    tags = models.ManyToManyField(taggers, null=True, blank=True)
     image = models.ImageField(
         upload_to=upload_location,
         null = True,
