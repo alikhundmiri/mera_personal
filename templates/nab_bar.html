@@ -13,16 +13,16 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li class="page-scroll">
-                    <a href="{% url 'home' %}#portfolio">Portfolio</a>
+                <li class="{% if nbar == 'blog' %} active {% endif %}">
+                    <a href="{% url 'blogs:list' %}">Blog</a>
                 </li>
-                <li class="">
+                <li class="{% if nbar == 'cv' %} active {% endif %}">
                     <a href="{% url 'document:cv' %}">Curriculam Vitae</a>
                 </li>
-                <li class="">
+                <li class="{% if nbar == 'work' %} active {% endif %}">
                     <a href="{% url 'work:list' %}">All Projects</a>
                 </li>
-                <li class="">
+                <li {% block contactstate %}{% endblock %}>
                     <a href="{% url 'contact' %}">Contact</a>
                 </li>
             </ul>

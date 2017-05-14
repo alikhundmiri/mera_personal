@@ -20,6 +20,7 @@ def resume(request):
 
     context = {
         # "website": website_list,
+        "nbar" : "resume",
         "today":today,
         "experience": experiance_list,
         "almamater": almamater_list,
@@ -54,6 +55,7 @@ def cv(request):
 
     context = {
         # "website": website_list,
+        "nbar" : "cv",        
         "today": today,
         "experience": experiance_list,
         "almamater": almamater_list,

@@ -11,6 +11,7 @@ def first_list(request):
     android_list = mywork.objects.android()
     ios_list = mywork.objects.ios()
     context = {
+        "nbar" : "work",
         "websites": website_list,
         "android_apps" : android_list,
         "ios_apps" : ios_list,
@@ -24,6 +25,7 @@ def first_detail(request, slug = None):
     instance = get_object_or_404(mywork, slug=slug)
 
     context = {
+        "nbar" : "work",
         "type": instance.type_work,
         "instance": instance,
     }

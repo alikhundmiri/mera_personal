@@ -3,10 +3,9 @@
 {% block title %}
     Curriculam Vitae | {{ block.super }}
 {% endblock %}
-{% block content %}
+{% block createblog %}
     
     <div style="margin-top:200px;"></div>
-    
     <div class="container visible-xs visible-sm">
         <div class="col-sm-12 " align="center">
             <img src="{% static 'images/DP_001.png' %}" class="img-responsive" alt="Ali Khundmiri, Display Picture" style="width:125px;height:159px;">
@@ -40,6 +39,7 @@
     <div class="container">
         <br>
         {% if experience %}
+        <div class="container">
             <h3>Experience</h3>
               <table class="table">
                 <thead>
@@ -61,6 +61,7 @@
               </table>
                 <hr>
                 <br>
+        </div>  
         {% endif %}
 
         {% if special %}
@@ -227,7 +228,5 @@
         {% if f14 %}
             <p>Has f14</p><br><hr>
         {% endif %}
-
-
     </div>
 {% endblock %}

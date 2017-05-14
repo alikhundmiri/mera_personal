@@ -35,6 +35,7 @@ ALLOWED_HOSTS = ["https://guarded-cliffs-97404.herokuapp.com/","guarded-cliffs-9
 INSTALLED_APPS = [
     'first',
     'cv_db',
+    'blogs',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'storages',
+    'crispy_forms',
+    'pagedown',
+    'markdown_deux',
+
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

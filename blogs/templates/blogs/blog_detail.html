@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+
+{% block title %}
+    {{ this_blog.title|truncatewords:5 }} | {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div style="margin-top:200px;"></div>
+
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="">
+            {% if this_blog.draft %}<span style="color: red"><b>DRAFT</b></span>{% endif %}
+            {% if this_blog.publish > today %}<span style="color: green"><b>Future Post</b></span>{% endif %}
+
+            <h3 style="margin-left: 20px">{{ this_blog.title }}</h3>
+            {% if this_blog.timestamp <= this_blog.updated %}
+                <p style="margin-left: 20px; color: gray;">Last Updated : {{ this_blog.updated }}</p>{% else %}
+                <p style="margin-left: 20px; color: gray;">Added : {{ this_blog.timestamp }}</p>{% endif %}
+            <p style="margin-left: 20px"><i>Posted by : {{ this_blog.user }}</i></p>
+            {% if this_blog.tags %}
+                <p  style="margin-left: 20px"> <small>Tags: 
+                {% for tag in this_blog.tags.all %}
+                <a href="">{{ tag.tag_name }}</a> 
+                {% endfor %}
+                </small></p>
+            {% endif %}
+
+            <p style="margin-left: 20px"><i>Share icons here</i></p>
+            {% if this_blog.image %}
+                <br>
+                <center><img src="{{ this_blog.image.url }}" class="img-responsive"></center><br>{% endif %}
+
+                <div align="right" style="margin-right: 20px" >
+                    <div class="fb-like" style="margin-left: 20px" data-href="{{ request.build_absolute_uri }}"
+                         data-layout="button_count" data-action="like" data-size="small" data-show-faces="true"
+                         data-share="true">
+                     </div>
+                 </div>
+            <hr>
+            <div style="margin-left: 20px; margin-right: 20px">
+                <p style="margin-left:20px;">{{ this_blog.detail|markdown|safe|linebreaks }}</p>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 -align-center fb-comments"
+             data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+    </div>
+{% endblock %}
