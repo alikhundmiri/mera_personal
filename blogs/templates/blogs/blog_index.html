@@ -52,6 +52,7 @@
             </div>
         {% endfor %}
         <div class="row">
+        {% if all_blogs %}
         <div class="pagination col-lg-12">
             <ul class="step-links pager">
                 {% if all_blogs.has_previous %}
@@ -72,6 +73,7 @@
                 {% endif %}
             </ul>
         </div>
+        {% endif %}
         </div>
     {% else %}
     <div class="row">
