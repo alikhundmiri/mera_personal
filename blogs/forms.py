@@ -14,5 +14,5 @@ class BlogForm(forms.ModelForm):
             "image",
             "draft",
             "publish",
-            "tags"
+            # "tags"
         ]
