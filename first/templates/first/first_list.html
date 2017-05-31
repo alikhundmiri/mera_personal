@@ -23,17 +23,17 @@
             <div class="row">
                 {% for item in ios_apps %}
                     <div class="col-md-4 portfolio-item">
-                        <a href="#">
+                        <a href="{{ item.get_absolute_url }}">
                             {% if item.image %}
                                 <img src="{{ item.image.url }}" class="img-responsive" alt="">
                             {% else %}
-                                <img class="img-responsive" src="{% static 'lander/img/profile.png' %}" alt="">
+                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item.title }}">
                             {% endif %}
                         </a>
                         <h3>
                             <a href="{{ item.get_absolute_url }}">{{ item.title }}</a>
                         </h3>
-                        <p>{{ item.detail }}</p>
+                        <p>{{ item.detail|truncatechars:100 }}</p>
                     </div>
                 {% endfor %}
             </div>
@@ -51,17 +51,17 @@
             <div class="row">
                 {% for item2 in android_apps %}
                     <div class="col-md-4 portfolio-item">
-                        <a href="#">
+                        <a href="{{ item2.get_absolute_url }}">
                             {% if item2.image %}
                                 <img class="img-responsive" src="{{ item2.image.url }}" alt="">
                             {% else %}
-                                <img class="img-responsive" src="{% static 'lander/img/profile.png' %}" alt="">
+                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item.title }}">
                             {% endif %}
                         </a>
                         <h3>
                             <a href="{{ item2.get_absolute_url }}">{{ item2.title }}</a>
                         </h3>
-                        <p>{{ item2.detail }}</p>
+                        <p>{{ item2.detail|truncatechars:100 }}</p>
                     </div>
                 {% endfor %}
             </div>
@@ -79,33 +79,48 @@
             <div class="row">
                 {% for item3 in websites %}
                     <div class="col-md-4 portfolio-item">
-                        <a href="#">
+                        <a href="{{ item3.get_absolute_url }}">
                             {% if item3.image %}
                                 <img class="img-responsive" src="{{ item3.image.url }}" alt="">
                             {% else %}
-                                <img class="img-responsive" src="{% static 'lander/img/profile.png' %}" alt="">
+                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item.title }}">
                             {% endif %}
                         </a>
                         <h3>
                             <a href="{{ item3.get_absolute_url }}">{{ item3.title }}</a>
                         </h3>
-                        <p>{{ item3.detail }}</p>
+                        <p>{{ item3.detail|truncatechars:100 }}</p>
                     </div>
                 {% endfor %}
             </div>
         {% endif %}
-{#        {% if not websites or not android_apps or not ios_apps %}#}
-{#            <div class="row">#}
-{#                <div class="col-lg-12 text-center">#}
-{#                    <br><br><br><br>#}
-{#                    <h1 class="">Oops!! <br><br><i class="fa fa-chain-broken fa-5x"></i><br><br><br>#}
-{#                        <small>There seems to be some problem with our servers<br>#}
-{#                        <br><br></small>#}
-{#                    </h1>#}
-{#                    <p>Please refresh to load the contents of this page. <br><br><br> If that does'nt work, either I am a talentless person, or the servers are damages, <b>Really</b> bad!. </p>#}
-{#                    <hr class="star-primary">#}
-{#                </div>#}
-{#            </div>#}
-{#        {% endif %}#}
+
+        {% if python %}
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="">Scripts
+                        <small>Python</small>
+                    </h1>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                {% for item3 in python %}
+                    <div class="col-md-4 portfolio-item">
+                        <a href="{{ item3.get_absolute_url }}">
+                            {% if item3.image %}
+                                <img class="img-responsive" src="{{ item3.image.url }}" alt="">
+                            {% else %}
+                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item.title }}">
+                            {% endif %}
+                        </a>
+                        <h3>
+                            <a href="{{ item3.get_absolute_url }}">{{ item3.title }}</a>
+                        </h3>
+                        <p>{{ item3.detail|truncatechars:100 }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

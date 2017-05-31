@@ -3,7 +3,7 @@
 {% load markdown_deux_tags %}
 
 {% block title %}
-    Blogs Archive | {{ block.super }}
+    Tag : {{this_tag}} | {{ block.super }}
 {% endblock %}
 {% block content %}
 
@@ -14,7 +14,10 @@
     <div class="row">
         <h1 style="text-align: center;margin: 10px, 10px, 10px, 10px;">Tags <small>Archive</small></h1>
         <br>
-        <p><b>Total Blogs with tag : {{ this_tag }} </b>{{ this_tag.count.all }}</p> <br>
+        {% if this_tag.description %}
+            <p><b>{{ this_tag }} :</b> {{ this_tag.description }}</p>
+        {% endif %}
+        <p><small><b>Total Blogs with tag : {{ this_tag }} </b>{{ this_tag.count.all }}</small></p> <br>
     </div>
         {% for blog in required_blogs %}
             <div class="row">

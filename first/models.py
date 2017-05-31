@@ -7,6 +7,7 @@ TYPES = (
     (1, "Website"),
     (2, "Android"),
     (3, "iOS"),
+    (4, "Python"),
 )
 ROLE = (
     (1, "Design"),
@@ -35,6 +36,9 @@ class PostManager(models.Manager):
     def ios(self, *args, **kwargs):
         return super(PostManager, self).filter(type_work=3)
 
+    def python(self, *args, **kwargs):
+        return super(PostManager, self).filter(type_work=4)
+    
 
 def upload_location(mywork, filename):
     return "%s/%s/%s" % (mywork.appName, mywork.type_work, filename)

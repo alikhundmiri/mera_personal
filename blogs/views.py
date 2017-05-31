@@ -163,13 +163,13 @@ def blog_all_tag(request):
 def blog_tag(request, slug=None):
     all_content = Post.objects.all()
     this_tag = get_object_or_404(taggers, tag_slug=slug)
-    print(this_tag)
-    print(all_content)
+    # print(this_tag)
+    # print(all_content)
     required_blogs = []
     for content in all_content:
         if this_tag in content.tags.all():
             required_blogs.append(content)
-    print(required_blogs)
+    # print(required_blogs)
 
     context = {
         "this_tag" : this_tag,

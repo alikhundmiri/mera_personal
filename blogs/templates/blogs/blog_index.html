@@ -77,19 +77,13 @@
         </div>
     {% else %}
     <div class="row">
-        <h3>Oh no! There are no blogs posted yet</h3>
-        <h3><a href="{% url 'blogs:create' %}">Post New here!</a></h3>
+        <h3>Oops, There seems to be some problem. <small>No Blogs are ready yet.</small></h3>
+        <h3>we are facing some problems at the server. Please visit us again.</h3>
     </div>
     {% endif %}
 
 {% endblock %}
 {% block left_content %}
-    {% if posting_privilage %}
-        <p>Post New Blogs </p>
-        <p><a href="{% url 'blogs:create' %}" class="btn btn-primary" role="button">Post New!</a></p>
-        <br>
-        <hr>
-    {% endif %}
     <p>Search Blogs:</p>
     <form method="get" action="">
         <div class="col-lg-12">

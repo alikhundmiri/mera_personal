@@ -10,11 +10,13 @@ def first_list(request):
     website_list = mywork.objects.website()
     android_list = mywork.objects.android()
     ios_list = mywork.objects.ios()
+    python_list = mywork.objects.python()
     context = {
         "nbar" : "work",
         "websites": website_list,
         "android_apps" : android_list,
         "ios_apps" : ios_list,
+        "python" : python_list,
         "list": list,
         "today": today,
     }
