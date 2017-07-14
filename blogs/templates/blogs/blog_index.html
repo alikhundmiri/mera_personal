@@ -2,6 +2,13 @@
 {% load staticfiles %}
 {% load markdown_deux_tags %}
 
+{% block head_extras %}
+    <meta property="og:url"           content="{{ request.build_absolute_uri }}" />
+    <meta property="og:image"         content="" />
+    <meta property="og:title"         content="Blogs"/>
+{% endblock %}
+
+
 {% block title %}
     Blogs | {{ block.super }}
 {% endblock %}
@@ -81,8 +88,8 @@
         <h3>we are facing some problems at the server. Please visit us again.</h3>
     </div>
     {% endif %}
-
 {% endblock %}
+
 {% block left_content %}
     <p>Search Blogs:</p>
     <form method="get" action="">
@@ -101,8 +108,4 @@
     <hr>
     <a style="font-size: 1.9em" href="{% url 'blogs:archive' %}">Blog Archives</a><br><br>
     <a style="font-size: 1.9em" href="{% url 'blogs:all_tag' %}">All Tags</a><br>
-        {% for tags in all_tags %}
-            <a style="margin-left: 20px; font-size: 1.5em" href="{{ tags.get_absolute_url }}">{{ tags }}</a><br>
-        {% endfor %}
-
 {% endblock %}

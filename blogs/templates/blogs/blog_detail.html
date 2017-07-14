@@ -2,6 +2,14 @@
 {% load staticfiles %}
 {% load markdown_deux_tags %}
 
+{% block head_extras %}
+    <meta property="og:url"           content="{{ request.build_absolute_uri }}" />
+    <meta property="og:image"         content="" />
+    <meta property="og:title"         content="{{ this_blog.title }}"/>
+{% endblock %}
+
+
+
 {% block title %}
     {{ this_blog.title|truncatewords:5 }} | {{ block.super }}
 {% endblock %}
@@ -14,35 +22,95 @@
             {% if this_blog.publish > today %}<span style="color: green"><b>Future Post</b></span>{% endif %}
 
             <h3 style="margin-left: 20px">{{ this_blog.title }}</h3>
+            <p style="margin-left: 20px;" class="pull-right"><i>Posted by : {{ this_blog.user.get_full_name }}</i></p>
+
             {% if this_blog.timestamp <= this_blog.updated %}
-                <p style="margin-left: 20px; color: gray;">Last Updated : {{ this_blog.updated }}</p>{% else %}
-                <p style="margin-left: 20px; color: gray;">Added : {{ this_blog.timestamp }}</p>{% endif %}
-            <p style="margin-left: 20px"><i>Posted by : {{ this_blog.user }}</i></p>
+                <p style="margin-left: 20px; color: gray;">Last Updated : {{ this_blog.updated }}</p>
+            {% else %}
+                <p style="margin-left: 20px; color: gray;">Added : {{ this_blog.timestamp }}</p>
+            {% endif %}
             {% if this_blog.tags %}
                 <p  style="margin-left: 20px"> <small>Tags: 
                 {% for tag in this_blog.tags.all %}
-                <a href="">{{ tag.tag_name }}</a> 
+                <a href="{{ tag.get_absolute_url }}">{{ tag.tag_name }}</a> 
+
                 {% endfor %}
                 </small></p>
             {% endif %}
 
-            <p style="margin-left: 20px"><i>Share icons here</i></p>
+            <p style="margin-left: 20px"><i>Liked this? Share with the world!</i></p>
+            <!-- Facebook share button code -->
+            <div
+                style = "style="margin-left: 20px"
+                class="fb-like"
+                data-share="true"
+                data-width="450"
+                data-show-faces="true">
+            </div>
+
             {% if this_blog.image %}
                 <br>
-                <center><img src="{{ this_blog.image.url }}" class="img-responsive"></center><br>{% endif %}
-
-                <div align="right" style="margin-right: 20px" >
-                    <div class="fb-like" style="margin-left: 20px" data-href="{{ request.build_absolute_uri }}"
-                         data-layout="button_count" data-action="like" data-size="small" data-show-faces="true"
-                         data-share="true">
-                     </div>
-                 </div>
+                <center><img src="{{ this_blog.image.url }}" class="img-responsive"></center><br>
+            {% endif %}
             <hr>
             <div style="margin-left: 20px; margin-right: 20px">
                 <p style="margin-left:20px;">{{ this_blog.detail|markdown|safe|linebreaks }}</p>
             </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-12 -align-center fb-comments"
-             data-href="{{ request.build_absolute_uri }}" data-numposts="5"></div>
+        <!--  Facebook Comments -->
+<!--         <div 
+        class="fb-comments" 
+        data-width="100%" 
+        data-href="{{ request.build_absolute_uri }}" 
+        data-numposts="50">
+        </div>
+ -->        
+
+        <!-- Disqus Comments -->
+        <div id="disqus_thread"></div>
+        <script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        
+        var disqus_config = function () {
+        this.page.url = {{ request.build_absolute_uri }};  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = {{ this_blog.slug }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://alikhundmiri.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     </div>
+    <script id="dsq-count-scr" src="//alikhundmiri.disqus.com/count.js" async></script>
+{% endblock %}
+
+{% block left_content %}
+    <p  style="visibility: hidden;">Search Blogs:</p>
+    <form method="get" action="" style="visibility: hidden;">
+        <div class="col-lg-12">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Search Blog"
+                       value="{{ request.GET.q }}">
+                <span class="input-group-btn">
+        <button class="btn btn-default" type="submit" value="Search"><i class="fa fa-search"></i></button>
+      </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </form>
+        <br>
+    <br>
+    <hr>
+    <a style="font-size: 1.9em" href="{% url 'blogs:archive' %}">Blog Archives</a><br><br>
+    <a style="font-size: 1.9em" href="{% url 'blogs:all_tag' %}">All Tags</a><br>
+        {% for tags in all_tags %}
+            <a style="margin-left: 20px; font-size: 1.5em" href="{{ tags.get_absolute_url }}">{{ tags }}</a><br>
+        {% endfor %}
+
 {% endblock %}

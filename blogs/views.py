@@ -39,6 +39,7 @@ def blog_detail(request, slug=None):
         if not request.user.is_staff or not request.user.is_superuser:
             raise Http404
     context = {
+        "dis_play" : "mode_174",
         "nbar" : "blog",
         "this_blog" : this_blog,
         "today" : today,
@@ -73,6 +74,7 @@ def blog_list(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         all_blogs = paginator.page(paginator.num_pages)
     context = {
+        "dis_play" : "mode_174",
         "nbar" : "blog",
         'all_blogs' : all_blogs,
         'all_tags' : all_tags,
@@ -110,6 +112,7 @@ def blog_archive(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         all_blogs = paginator.page(paginator.num_pages)
     context = {
+        "dis_play" : "mode_174",
         "nbar" : "blog",
         'all_blogs' : all_blogs,
         'all_tags' : all_tags,
@@ -125,13 +128,14 @@ def blog_update(request, slug= None):
     instance = get_object_or_404(Post, slug=slug)
     if instance.user != request.user:
         raise Http404
-    form = BlogForm(request.POST or None, request.FILES or None, instance= instance)
+    form = BlogForm(request.POST or None, request.FILES or None, instance = instance)
     if form.is_valid():
         instance = form.save(commit=False)
         instance.save()
         messages.success(request, "Blog Edited Successfully!!")
         return  HttpResponseRedirect(instance.get_absolute_url())
     context = {
+        "dis_play" : "mode_174",
         "nbar" : "blog",
         "form":form,
         "tab_text": "Edit Blog Post",
@@ -154,6 +158,7 @@ def blog_delete(request, slug=None):
 def blog_all_tag(request):
     all_tags = taggers.objects.all()
     context = {
+        "dis_play" : "mode_174",
         "all_tags" : all_tags,
         "nbar" : "blog",
         }
@@ -172,6 +177,7 @@ def blog_tag(request, slug=None):
     # print(required_blogs)
 
     context = {
+        "dis_play" : "mode_174",
         "this_tag" : this_tag,
         "required_blogs" : required_blogs,
         "nbar" : "blog",

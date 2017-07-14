@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content_detail %}
+{% load crispy_forms_tags %}
+
+<div style="margin-top: 100px" class="row"></div>
+	<h1>{{ name }}</h1>
+	<hr>	
+	<form method="get" action="" enctype="multipart/
+	form-data"> {% csrf_token %}
+	<select name="q" type="text" class="form-control" placeholder="Select Type" value="{{ request.GET.q }}">
+		{% for names in m %}
+			<option value="{{ names.name }}">{{ names.name }}</option>
+		{% endfor %}
+	</select>
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="submit" value="Search"><i class="fa fa-search"></i></button>
+		</span>
+	</form>
+	<hr>
+<br>
+<br>
+	<h2>The lists:</h2>
+	<ol>
+		{% for names in d %}
+			<li>{{ names.name }}</li>
+		{% endfor %}
+	</ol>
+	<br><br><br><br>
+{% endblock %}

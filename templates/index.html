@@ -9,6 +9,20 @@
 {% endblock %}
 
 {% block createblog %}
+    <!-- Modal for Diverting to Blog Page -->
+    <div class="modal fade" id="overlay">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <p>Context here</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Header -->
     <header>
@@ -84,7 +98,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>Mostly self taught, I have acquired certain skill set by worked on a variety of projects in past
+                    <p>Mostly self taught, I have acquired certain skill set by working on a variety of projects in past
                         few years, </p>
                 </div>
                 <div class="col-lg-4">
@@ -126,7 +140,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>I love learning new things, and like any other human, I tend to forget it if I don't practice it or keep a not of it. So I have decided to commit my self to blog every thing I learn. You can check out my <a href="{% url 'blogs:archive' %}"> blog archive over here</a> and my <a href="{% url 'blogs:list' %}">latest blogs here</a>.</p>
+                    <p>I love learning new things, and like any other human, I tend to forget it if I don't practice it or keep a note of it. So I have decided to commit my self to blog every thing I learn. You can check out my <a href="{% url 'blogs:archive' %}"> blog archive over here</a> and my <a href="{% url 'blogs:list' %}">latest blogs here</a>.</p>
                 </div>
                 <div class="col-lg-4">
                     <p>The domain of the material I will be writing will be broad as well as precise to my likes. If I like some thing, I blog it.</p>
@@ -137,13 +151,22 @@
                         <li>Science of Life.</li>
                         <li>Exploring science of Movies universe.</li>
                         <li>Interesting videos found online.</li>
-                        <li>...and many more.</li>
+                        <li><a href="{% url 'blogs:all_tag' %}">...and many more.</a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
     <!-- jQuery -->
+    <!-- jQuery for Launching Modal right after page loads! -->
+    <script type="text/javascript">
+        $('#overlay').modal('show');
+
+        setTimeout(function() {
+            $('#overlay').modal('hide');
+        }, 5000);        
+    </script>
+
     <script src="{% static 'lander/vendor/jquery/jquery.min.js' %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
