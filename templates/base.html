@@ -43,7 +43,7 @@
     <!-- Code to monitor website from google analytics -->
 
 
-<!--     <script>
+    <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
         m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -51,7 +51,7 @@
         ga('create', 'UA-98290233-1', 'auto');
         ga('send', 'pageview');
     </script>
- -->
+
  
     {% block head_extras %}
 
@@ -59,6 +59,8 @@
 </head>
 
 <body id="page-top" class="index">
+
+<!-- Script for Facebook Share and Comments -->
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -78,6 +80,8 @@
    }(document, 'script', 'facebook-jssdk'));
 </script>
 
+<!-- Script for Google Ads for blogs -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
 
 
@@ -115,16 +119,12 @@
                 {% block left_content %}{% endblock %}
                 <!-- ADVERTISEMENT FROM GOOGLE ADSENSE -->
                 <p style="font-size: 1.1em; color: #808080">A word from our Advertisers</p>
-                <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
                 <!-- Personal Blog -->
                 <ins class="adsbygoogle"
                      style="display:inline-block;width:300px;height:600px;"
                      data-ad-client="ca-pub-7313204296797742"
                      data-ad-slot="7317612740">
                  </ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
             </div>
         </div>
     </div>
@@ -146,10 +146,15 @@
     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=421771361539268";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Script for Google Ads for blogs -->
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 </body>
 
+<!--  Include for Footer -->
 {% include 'footer.html' %}
-
 
 <!-- jQuery -->
 <script src="{% static 'lander/vendor/jquery/jquery.min.js' %}"></script>
@@ -165,6 +170,7 @@
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js'></script>
 
+<!-- This Javascript is for Showing Markdown Text in Blogs and All work pages -->
 <script type="text/javascript">
     $(document).ready(function () {
         $(".content-markdown").each(function () {
@@ -179,7 +185,6 @@
         })
     })
     
-
     var contentInput = $("#id_content");
     function setContent(value){
         var markedContent = marked(value)
@@ -203,8 +208,5 @@
         var newContent = $(this).val()
         setTitle(newContent)
     })
-    // preview-title
-    // preview-content
-
 </script>
 </html>
