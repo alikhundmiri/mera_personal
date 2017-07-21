@@ -6,13 +6,13 @@
     <meta property="og:url"           content="{{ request.build_absolute_uri }}" />
     <meta property="og:image"         content="" />
     <meta property="og:title"         content="Blogs"/>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
       (adsbygoogle = window.adsbygoogle || []).push({
         google_ad_client: "ca-pub-7313204296797742",
         enable_page_level_ads: true
       });
-    </script>    
+    </script> 
+
 {% endblock %}
 
 
@@ -25,46 +25,63 @@
         {% if all_blogs %}
     
     <div class="row">
-        <h1 style="text-align: center;margin: 10px, 10px, 10px, 10px;">Blogs : <small>WHAT WE HAVE LEARNED SO FAR...</small></h1>
+        <h1 style="text-align: center;margin: 10px, 10px, 10px, 10px;">Blogs. <small>WHAT WE HAVE LEARNED SO FAR...</small></h1>
         <br>
     </div>
         {% for blog in all_blogs %}
             <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <div class="thumbnail">
-                    {% if blog.tags.all %}
-                        {% for tag in blog.tags.all %}
-                            <a class="pull-right" href="{{ tag.get_absolute_url }}"> &nbsp;{{ tag }} </a> 
-                        {% endfor %}
-                        <a class="pull-right" href="{% url 'blogs:all_tag' %}"><b> Tags: </b></a>
-                    {% endif %}
-
-                    <div style="margin-left: 20px; margin-right: 20px;">
-                        {% if blog.draft %}<span style="color: red"><b>DRAFT</b></span>{% endif %}
-                        {% if blog.publish > today %}<span style="color: green"><b>Future blog</b></span>{% endif %}
-                        <h3><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
-
-                        {% if blog.image %}
-                            <img src="{{ blog.image.url }}" class="img-responsive">
-                            <br>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="thumbnail">
+                        {% if blog.tags.all %}
+                            {% for tag in blog.tags.all %}
+                                <a class="pull-right" href="{{ tag.get_absolute_url }}"> &nbsp;{{ tag }} </a> 
+                            {% endfor %}
+                            <a class="pull-right" href="{% url 'blogs:all_tag' %}"><b> Tags: </b></a>
                         {% endif %}
-                        <p>blog author : {{ blog.user }}</p>
-                        {% if blog.timestamp <= blog.updated %}
-                            <p>Updated : {{ blog.updated|timesince }} ago</p>{% else %}
-                            <p>Added : {{ blog.timestamp|timesince }} ago</p>{% endif %}
-                        <hr>
-                        <div class="">
-                            <p style="margin-left: 20px">{{     blog.detail|markdown|truncatewords:50 }} <a href="{{ blog.get_absolute_url }}"> read more</a></p>
-                            
+
+                        <div style="margin-left: 20px; margin-right: 20px;">
+                            {% if blog.draft %}<span style="color: red"><b>DRAFT</b></span>{% endif %}
+                            {% if blog.publish > today %}<span style="color: green"><b>Future blog</b></span>{% endif %}
+                            <h3><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a></h3>
+
+                            {% if blog.image %}
+                                <img src="{{ blog.image.url }}" class="img-responsive">
+                                <br>
+                            {% endif %}
+                            <p>blog author : {{ blog.user }}</p>
+                            {% if blog.timestamp <= blog.updated %}
+                                <p>Updated : {{ blog.updated|timesince }} ago</p>{% else %}
+                                <p>Added : {{ blog.timestamp|timesince }} ago</p>{% endif %}
+                            <hr>
+                            <div class="">
+                                <p style="margin-left: 20px">{{     blog.detail|markdown|truncatewords:50 }} <a href="{{ blog.get_absolute_url }}"> read more</a></p>
+                                
+                            </div>
+                            <br>
+                            <hr>
                         </div>
-                        <br>
-                        <hr>
                     </div>
+                    <br><br><br>
                 </div>
-                <br><br><br>
-            </div>
             </div>
         {% endfor %}
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+            <!--  In menu ads from adsense. Should like just like the list. -->
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-format="fluid"
+                     data-ad-layout="text-only"
+                     data-ad-layout-key="-gu-1d+67-3c-9k"
+                     data-ad-client="ca-pub-7313204296797742"
+                     data-ad-slot="6653245714"></ins>
+                <script>
+                     (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+                <br><br><br>
+            </div>
+        </div>
+
         <div class="row">
         {% if all_blogs %}
         <div class="pagination col-lg-12">
