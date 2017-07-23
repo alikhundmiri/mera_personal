@@ -2,7 +2,9 @@
 {% load staticfiles %}
 <head>
 	{% block title %}
-		({{events.count}}) All Invitations
+		{% if events.count < 1 %}(0){% elif events.count > 10 %}({{events.count}}){% else %}(9+){% endif %}
+		 All Invitations
+		}
 	{% endblock %}
 	{% block head_extra %}
 		<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
