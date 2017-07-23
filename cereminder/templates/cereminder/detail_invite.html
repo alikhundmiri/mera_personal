@@ -50,7 +50,7 @@
                 </h1>            
             </div>
             <div class="thumbnail">                
-                <img class="img-responsive" src="{% static 'base/images/800x300.png' %}" alt="">
+                <img class="img-responsive" src="{% static 'ceremind/images/800x300.png' %}" alt="">
                 <div class="caption-full">
                     <h4 class="pull-right">{{event.event_date|date:"g:i A" }}<br>{{event.event_date|date:"d F Y" }}<br>{{event.event_date|date:"l" }}</h4>
                     {% for a in event.event_location.all %}
