@@ -24,8 +24,9 @@
                     <a href="{{ e.get_absolute_url }}" class="list-group-item {% if e.id == event.id %}active{% endif %} ">{{e.get_event_type_display}}</a>
                {% endfor %}
             </div>
-            <div class="row well">
+            <div class="row well" style="margin-left: 0px; margin-right: 0px">
                 <p style="color: RED">BRIEFING</p>
+                <hr>
                 <div class="invite-card">
                     {% if event.event_type == 1 %}
                         <h2>On {{event.event_date|date:"d F Y" }}, {% for a in event.bride_side.all %}{{ a.name }}{% endfor %} and {% for a in event.bridegroom_side.all %}{{ a.name }}{% endfor %}, will be celebrating their Mahendi at {{event.event_date|date:"g:i A" }} in {% for a in event.event_location.all %}{{a.hall_name}}{% endfor %}.<br> <i>conditional</i> And you have been invited</h2>
