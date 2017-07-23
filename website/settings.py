@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'cv_db',
     'blogs',
     'dinner',
+    'cereminder',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
