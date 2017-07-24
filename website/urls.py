@@ -17,7 +17,10 @@ urlpatterns = [
     url(r'^dinner/', include('dinner.urls', namespace="dinner")),
     url(r'^resume/$', RedirectView.as_view(url='https://personal-website-ali-1.s3.amazonaws.com/static/download/pdf/Ali_resume.pdf'), name='resume'),
     url(r'^work/', include('first.urls', namespace="work")),
+    # Apps on Showcase
     url(r'^ceremony/', include('cereminder.urls', namespace="cereminder")),
+
+    # index page.
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
 ]
 

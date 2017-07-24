@@ -55,7 +55,7 @@
                             {% if item2.image %}
                                 <img class="img-responsive" src="{{ item2.image.url }}" alt="">
                             {% else %}
-                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item.title }}">
+                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item2.title }}">
                             {% endif %}
                         </a>
                         <h3>
@@ -83,13 +83,41 @@
                             {% if item3.image %}
                                 <img class="img-responsive" src="{{ item3.image.url }}" alt="">
                             {% else %}
-                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item.title }}">
+                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item3.title }}">
                             {% endif %}
                         </a>
                         <h3>
                             <a href="{{ item3.get_absolute_url }}">{{ item3.title }}</a>
                         </h3>
                         <p>{{ item3.detail|truncatechars:100 }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if websites_hosted %}
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h1 class="">Websites
+                        <small>Hosted on this site</small>
+                    </h1>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+                {% for item4 in websites_hosted %}
+                    <div class="col-md-4 portfolio-item">
+                        <a href="{{ item4.get_absolute_url }}">
+                            {% if item4.image %}
+                                <img class="img-responsive" src="{{ item4.image.url }}" alt="">
+                            {% else %}
+                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item4.title }}">
+                            {% endif %}
+                        </a>
+                        <h3>
+                            <a href="{{ item4.get_absolute_url }}">{{ item4.title }}</a>
+                        </h3>
+                        <p>{{ item4.detail|truncatechars:100 }}</p>
                     </div>
                 {% endfor %}
             </div>
@@ -105,19 +133,19 @@
                 </div>
             </div>
             <div class="row">
-                {% for item3 in python %}
+                {% for item5 in python %}
                     <div class="col-md-4 portfolio-item">
-                        <a href="{{ item3.get_absolute_url }}">
-                            {% if item3.image %}
-                                <img class="img-responsive" src="{{ item3.image.url }}" alt="">
+                        <a href="{{ item5.get_absolute_url }}">
+                            {% if item5.image %}
+                                <img class="img-responsive" src="{{ item5.image.url }}" alt="">
                             {% else %}
-                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item.title }}">
+                                <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="{{ item5.title }}">
                             {% endif %}
                         </a>
                         <h3>
-                            <a href="{{ item3.get_absolute_url }}">{{ item3.title }}</a>
+                            <a href="{{ item5.get_absolute_url }}">{{ item5.title }}</a>
                         </h3>
-                        <p>{{ item3.detail|truncatechars:100 }}</p>
+                        <p>{{ item5.detail|truncatechars:100 }}</p>
                     </div>
                 {% endfor %}
             </div>
