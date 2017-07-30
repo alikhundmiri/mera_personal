@@ -25,8 +25,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ggk*3^m@sgffn2*@#tb1r9)m%7&cgv&!-kr@91=irpzjp#w1f0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 ALLOWED_HOSTS = ["https://guarded-cliffs-97404.herokuapp.com/","guarded-cliffs-97404.herokuapp.com", "alikhundmiri.com", "www.alikhundmiri.com", "0.0.0.0","192.168.1.33"]
 
@@ -38,18 +38,25 @@ INSTALLED_APPS = [
     'blogs',
     'dinner',
     'cereminder',
+    'poetist_core',
+    'poetist_dashboard',
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'robots',
     'storages',
     'crispy_forms',
     'pagedown',
     'markdown_deux',
 
 ]
+SITE_ID = 1
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 

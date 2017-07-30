@@ -106,7 +106,6 @@ class mywork(models.Model):
 
 
 #####################   P R O J E C T S    H O S T E D    O N    M Y   W E B S I T E   #########################
-
 class hosted_projects(models.Model):
     appName = "hosted"
     title = models.CharField(max_length=120)

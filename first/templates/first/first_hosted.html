@@ -62,7 +62,9 @@
                             {% endif %}</li>
                     {% endif %}
                     {% if instance.item_url %}
-                        <li><b>Project URL : </b><a href="{% url '{{instance.item_url}}' %}" class="btn btn-default">Check it out</a></li>
+                        <li><b>Project URL : </b><a href="{{ instance.item_url }}" class="btn btn-default">Check it out</a></li>
+                        }
+
                     {% endif %}
                 </ul>
                 <p>For further more details, please <a href="{% url 'contact' %}">contact</a> our developer.</p>
