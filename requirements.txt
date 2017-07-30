@@ -8,6 +8,7 @@ django-crispy-forms==1.6.1
 django-markdown-deux==1.0.5
 django-markdownx==2.0.21
 django-pagedown==0.1.1
+django-robots==3.0
 django-storages==1.5.2
 docutils==0.13.1
 gunicorn==19.7.1
