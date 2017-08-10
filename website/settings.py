@@ -38,8 +38,6 @@ INSTALLED_APPS = [
     'blogs',
     'dinner',
     'cereminder',
-    'poetist_core',
-    'poetist_dashboard',
     'accounts',
     'django.contrib.admin',
     'django.contrib.auth',

@@ -38,8 +38,6 @@ urlpatterns = [
 
     # Apps on Showcase
     url(r'^ceremony/', include('cereminder.urls', namespace="cereminder")),
-    url(r'^poetist/dashboard/', include('poetist_dashboard.urls', namespace="poetist_dashboard")),
-    url(r'^poetist/', include('poetist_core.urls', namespace="writer")),
 
     # index page.
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
