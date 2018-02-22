@@ -44,7 +44,7 @@ def blog_detail(request, slug=None):
         "this_blog" : this_blog,
         "today" : today,
     }
-    return render(request, "blogs/blog_detail.html", context)
+    return render(request, "blogs/blog_n_detail.html", context)
 
 
 def blog_list(request):
@@ -83,7 +83,8 @@ def blog_list(request):
         "posting_privilage" : posting_privilage,
         "today" : today
     }
-    return render(request, "blogs/blog_index.html", context)
+    # return render(request, "blog_base.html", context)
+    return render(request, "blogs/blog_n_index.html", context)
 
 def blog_archive(request):
     today = timezone.now().date()
@@ -100,7 +101,7 @@ def blog_archive(request):
             Q(detail__icontains=query)
         ).distinct()
 
-    paginator = Paginator(all_blogs_list, 100) # show 100 Blogs per page
+    paginator = Paginator(all_blogs_list, 50) # show 50 Blogs per page
     page_request_var = "page"
     page = request.GET.get(page_request_var)
     try:
@@ -121,7 +122,7 @@ def blog_archive(request):
         "posting_privilage" : posting_privilage,
         "today" : today
     }
-    return render(request, "blogs/blog_archive.html", context)
+    return render(request, "blogs/blog_n_archive.html", context)
 
 @login_required
 def blog_update(request, slug= None):
@@ -162,7 +163,7 @@ def blog_all_tag(request):
         "all_tags" : all_tags,
         "nbar" : "blog",
         }
-    return render(request, "blogs/all_tags.html", context)
+    return render(request, "blogs/all_n_tags.html", context)
 
 
 def blog_tag(request, slug=None):
@@ -182,4 +183,4 @@ def blog_tag(request, slug=None):
         "required_blogs" : required_blogs,
         "nbar" : "blog",
         }
-    return render(request, "blogs/content_tag.html", context)
+    return render(request, "blogs/content_n_tag.html", context)

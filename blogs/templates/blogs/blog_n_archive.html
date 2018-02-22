@@ -1,0 +1,105 @@
+{% extends "blog_base.html" %}
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+
+{% block head_property %}
+<meta property="og:url"           content="{{ request.build_absolute_uri }}" />
+<meta property="og:title"         content="Blogs by Ali Khundmiri of New life shoes"/>
+{% endblock %}
+
+
+{% block title %}
+Blogs | {{ block.super }}
+{% endblock %}
+{% block content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({% static 'blog/img/home-bg.jpg' %})">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="site-heading">
+					<h1>Archive</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-md-10 mx-auto">
+
+			{% for blog in all_blogs %}
+			<div class="post-preview">
+				<a href="{{ blog.get_absolute_url }}">
+					<h4 class="post-title">
+						{{ blog.title }}
+					</h4>
+					<p class="post-meta">
+						By {{ blog.user }}
+						| {% if blog.timestamp <= blog.updated %}
+						Updated : {{ blog.updated|timesince }} ago
+						{% else %}
+						Added : {{ blog.timestamp|timesince }} ago
+						{% endif %}
+						{% if blog.tags.all %}
+						| {{blog.tags.all|length}} tags.
+						{% endif %}
+					</p>
+				</a>
+			</div>
+			<hr>
+			{% endfor %}
+
+<!-- 			<div class="post-preview">
+				<a href="post.html">
+					<h2 class="post-title">
+						Science has not yet mastered prophecy
+					</h2>
+					<h3 class="post-subtitle">
+						We predict too much for the next year and yet far too little for the next ten.
+					</h3>
+				</a>
+				<p class="post-meta">Posted by
+					<a href="#">Start Bootstrap</a>
+				on August 24, 2018</p>
+			</div>
+			<hr>
+		-->
+		<!-- Pager -->
+
+		{% if all_blogs %}
+		<div class="pagination col-lg-12 clearfix">
+			<ul class="step-links pager">
+				{% if all_blogs.has_previous %}
+				<li><a class="btn btn-primary float-left" href="?{{ page_request_var }}=
+
+					{{ all_blogs.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Newer</a>
+				</li>
+				{% endif %}
+
+				<span class="current">
+					Page {{ all_blogs.number }} of {{ all_blogs.paginator.num_pages }}.
+				</span>
+
+				{% if all_blogs.has_next %}
+				<li><a class="btn btn-primary float-right" href="?{{ page_request_var }}=
+					{{ all_blogs.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Older</a>
+				</li>
+				{% endif %}
+			</ul>
+		</div>
+		{% endif %}
+
+<!-- 
+		<div class="clearfix">
+			<a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+		</div>
+	-->
+</div>
+</div>
+</div>
+{% endblock %}
