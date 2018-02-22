@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ggk*3^m@sgffn2*@#tb1r9)m%7&cgv&!-kr@91=irpzjp#w1f0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # DEBUG = True
 
 ALLOWED_HOSTS = ["https://guarded-cliffs-97404.herokuapp.com/","guarded-cliffs-97404.herokuapp.com", "alikhundmiri.com", "www.alikhundmiri.com", "0.0.0.0","192.168.1.33"]
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'dinner',
     'cereminder',
     'accounts',
+    'tweetme',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,8 +54,19 @@ INSTALLED_APPS = [
     'crispy_forms',
     'pagedown',
     'markdown_deux',
-
+    'django_celery_beat',
+    'django_celery_results',
 ]
+
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Asia/Kolkata'
+
+
 SITE_ID = 1
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -127,7 +140,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -155,6 +168,14 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # # Tell the staticfiles app to use S3Boto storage when writing the collected static files (when
 # # you run `collectstatic`).
 # STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+
+# Grab all the files from here, and put them in the S3 Bucket!!
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+# Added this on 19th August. After learning from experiments on Ritrew app.
+
 
 # I JUST ADDED A FILE NAMED cumstom_storages.py IN THE SAME DIRECTORY AS manage.oy
 STATICFILES_LOCATION = 'static'

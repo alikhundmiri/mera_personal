@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+
+{% block head_extras %}
+    <meta property="og:url"           content="{{ request.build_absolute_uri }}" />
+    <meta property="og:image"         content="" />
+    <meta property="og:title"         content="My Tweet scheduler"/>
+{% endblock %}
+
+
+{% block title %}
+	Tweet ID : {{tweet.id}} | Tweetme | {{ block.super }}
+{% endblock %}
+{% block content_detail %}
+	<div style="margin-top:180px;"></div>
+	<div class="row">
+		<div class="col-md-12 img-rounded" style="background-color: #f8f8ff">
+			<p>Tweet:</p>
+			<h2>
+				{{tweet.tweet}}
+			</h2>
+		</div>		
+	</div>
+	<div class="row">
+		<div class="col-md-5 img-rounded" style="background-color: #f8f8ff; margin: 10px">
+		<h4><i>Tweet detail</i></h4>
+			<p>
+				<ul>
+					<li>
+						<b>Character Count</b>:
+						<div class="progress">
+							<div class="progress-bar" role="progressbar" aria-valuenow="{{tweet.tweet|length}}" aria-valuemin="0" aria-valuemax="140" style="width: {{tweet_percent}}%;">
+								{{tweet.tweet|length}} characters
+							</div>
+						</div>						
+					</li>
+					<li>
+						<b>Status</b>: {{tweet.get_status_display}}			
+					</li>
+					<li>
+						<b>Scheduled for</b>: {{tweet.tweeton}}
+					</li>
+					<li>
+						<b>Scheduled on</b>: {{tweet.timestamp}}
+					</li>
+				</ul>
+			</p>			
+		</div>
+		<div class="col-md-6 img-rounded" style="background-color: #f8f8ff; margin: 10px">
+			<h4><i>Attachment</i></h4>
+			{% if tweet.image_type == 0 %}
+				<p><i>Text tweet</i></p>
+			{% elif tweet.image_type == 1 %}
+				<p>Load from media files</p>
+			{% elif tweet.image_type == 2 %}
+				<p>Load from URL</p>
+			{% endif %}
+		</div>
+	</div>
+
+{% endblock %}
