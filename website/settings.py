@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'cereminder',
     'accounts',
     'tweetme',
-
+    'customredirect', #<-- This is an app to create custom redirect links
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,8 +150,10 @@ USE_L10N = True
 USE_TZ = True
 
 AWS_STORAGE_BUCKET_NAME = 'personal-website-ali-1'
-AWS_ACCESS_KEY_ID = 'AKIAJQVTMRGY2MP3YE3Q'
-AWS_SECRET_ACCESS_KEY = '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'
+
+
+AWS_ACCESS_KEY_ID = os.environ.get('S3_KEY')
+AWS_SECRET_ACCESS_KEY = os.environ.get('S3_SECRET')
 
 # Tell django-storages that when coming up with the URL for an item in S3 storage, keep
 # it simple - just use this domain plus the path. (If this isn't set, things get complicated).

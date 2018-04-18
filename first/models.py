@@ -180,7 +180,7 @@ def create_slug_2(instance, new_slug=None):
     exists = qs.exists()
     if exists:
         new_slug = "%s-%s" % (slug, qs.first().id)
-        return create_slug(instance, new_slug=new_slug)
+        return create_slug_2(instance, new_slug=new_slug)
     return slug
 
 

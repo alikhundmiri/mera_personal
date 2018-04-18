@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^resume/$', RedirectView.as_view(url='https://personal-website-ali-1.s3.amazonaws.com/static/download/pdf/Ali_resume.pdf'), name='resume'),
     url(r'^work/', include('first.urls', namespace="work")),
     url(r'^tweetme/', include('tweetme.urls', namespace="tweetme")),
+    url(r'^links/', include('customredirect.urls', namespace="customredirect")),
 
     # Urls from Accounts. Login, Logout, Register
     url(r'login/',login_view, name='login' ),

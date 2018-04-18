@@ -17,10 +17,10 @@
                     <a href="{% url 'blogs:list' %}">Blog</a>
                 </li>
                 <li class="{% if nbar == 'cv' %} active {% endif %}">
-                    <a href="{% url 'document:cv' %}">Curriculam Vitae</a>
+                    <a href="{% url 'document:cv' %}">CV</a>
                 </li>
                 <li class="{% if nbar == 'work' %} active {% endif %}">
-                    <a href="{% url 'work:list' %}">All Projects</a>
+                    <a href="{% url 'work:list' %}">Projects</a>
                 </li>
                 <li {% block contactstate %}{% endblock %}>
                     <a href="{% url 'contact' %}">Contact</a>
