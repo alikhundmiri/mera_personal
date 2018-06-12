@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block head_extras %}
+<style type="text/css">
+.custom_card{
+	background-color: #E4DFDA;
+	border: transparent;
+	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
+}
+.custom_card:hover{
+	background-color: #E2D8CE;
+	box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 12px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+</style>
+{% endblock %}
+
+
+{% block content_1 %}
+
+<div class="container">
+	<div style="margin-top: 50px"></div>
+	<div class="jumbotron">
+		<h1 class="display-4">Reven Sours!</h1>
+		<p class="lead">Revenue Source Database.</p>
+		<hr class="my-4">
+		<p>I wanted to make a database with all those websites around the web which allows you to earn a little extra cash.
+		This is just a list, please do your own research before jumping in to the platform.</p>
+
+	</div>
+	<!-- Page Heading -->
+	<h1 class="my-4">Platforms
+		<small></small>
+	</h1>
+	<hr>
+
+	<div class="row">
+		<div class="card-columns">
+			{% for platform in all_platforms %}
+			{% if forloop.counter == 9 %}
+			<div class="card">
+				<a href="{{advert.website}}" target="_blank"><img class="card-img-top" src="{{advert.image.url}}" alt="{{advert.client_description}}"></a>
+			</div>
+			{% endif %}
+			<div class="card custom_card">
+				{% if platform.image %}
+				<img class="card-img-top" style="padding: 10px" src="{{platform.image.url}}" alt="">
+				{% endif %}
+				<div class="card-body">
+					<h4 class="card-title">
+						<a href="{{platform.website}}" target="_blank">{{platform.platform_name}}</a>
+					</h4>
+					<p class="card-text">{{platform.platform_description}}</p>
+					{% for source in platform.all_sources.all %}
+					{% if source.public_display %}
+					<a href="{{source.website}}" class="card-link" target="_blank">{{source.source_name}}</a>
+					{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	<!-- /.row -->
+
+	<!-- Pagination -->
+	<!-- <ul class="pagination justify-content-center">
+		<li class="page-item">
+			<a class="page-link" href="#" aria-label="Previous">
+				<span aria-hidden="true">&laquo;</span>
+				<span class="sr-only">Previous</span>
+			</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" href="#">1</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" href="#">2</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" href="#">3</a>
+		</li>
+		<li class="page-item">
+			<a class="page-link" href="#" aria-label="Next">
+				<span aria-hidden="true">&raquo;</span>
+				<span class="sr-only">Next</span>
+			</a>
+		</li>
+	</ul> -->
+
+</div>
+<!-- /.container -->
+{% endblock %}
