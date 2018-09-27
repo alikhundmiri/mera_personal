@@ -28,7 +28,7 @@ SECRET_KEY = 'ggk*3^m@sgffn2*@#tb1r9)m%7&cgv&!-kr@91=irpzjp#w1f0'
 DEBUG = False
 # DEBUG = True
 
-ALLOWED_HOSTS = ["https://guarded-cliffs-97404.herokuapp.com/","guarded-cliffs-97404.herokuapp.com", "alikhundmiri.com", "www.alikhundmiri.com", "0.0.0.0","192.168.1.33"]
+ALLOWED_HOSTS = ["https://guarded-cliffs-97404.herokuapp.com/","guarded-cliffs-97404.herokuapp.com", "alikhundmiri.com", "www.alikhundmiri.com", "0.0.0.0","192.168.1.33", '172.20.10.3']
 
 # Application definition
  

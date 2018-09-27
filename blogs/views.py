@@ -55,6 +55,8 @@ def blog_list(request):
     if request.user.is_staff or request.user.is_superuser:
         all_blogs_list = Post.objects.all()
         posting_privilage = True
+
+
     query = request.GET.get("q")
     if query:
         all_blogs_list = all_blogs_list.filter(
@@ -73,6 +75,8 @@ def blog_list(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         all_blogs = paginator.page(paginator.num_pages)
+
+
     context = {
         "dis_play" : "mode_174",
         "nbar" : "blog",

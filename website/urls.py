@@ -22,6 +22,7 @@ sitemaps = {
     "products" : WorkPublishedSitemap
 }
 
+# ''
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^blog/', include('blogs.urls', namespace="blogs")),
@@ -29,6 +30,7 @@ urlpatterns = [
     url(r'^cv/', include('cv_db.urls', namespace="document")),
     url(r'^dinner/', include('dinner.urls', namespace="dinner")),
     url(r'^resume/$', RedirectView.as_view(url='https://personal-website-ali-1.s3.amazonaws.com/static/download/pdf/Ali_resume.pdf'), name='resume'),
+    url(r'^metro_project/$', RedirectView.as_view(url='https://docs.google.com/spreadsheets/d/17GXgiQyL5MTAM05MA7Soi70530gheSJF_z_hWN2GNAk/edit?usp=sharing'), name='metro_project'),
     url(r'^work/', include('first.urls', namespace="work")),
     url(r'^tweetme/', include('tweetme.urls', namespace="tweetme")),
     url(r'^links/', include('customredirect.urls', namespace="customredirect")),
