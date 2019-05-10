@@ -7,6 +7,8 @@ from .views import (
 	redirect_new
 )
 
+app_name = "customredirect"
+
 urlpatterns = [
     url(r'^$', redirect_intro, name='redirect_intro'),
     url(r'^new/$', redirect_new, name='redirect_new'),

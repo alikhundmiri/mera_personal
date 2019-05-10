@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.utils.text import slugify
 from django.db.models.signals import pre_save
 from django.utils import timezone
@@ -47,7 +47,7 @@ class Post(models.Model):
     draft = models.BooleanField(default=False)
     publish = models.DateField(auto_now=False, auto_now_add=False, default=timezone.now())
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete=models.CASCADE)
 
     timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)

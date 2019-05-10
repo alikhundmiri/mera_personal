@@ -2,7 +2,6 @@ from django.contrib.sitemaps import Sitemap
 
 # Imports from all apps
 from blogs.models import Post, taggers
-from cereminder.models import events
 from first.models import mywork, hosted_projects
 
 
@@ -37,14 +36,6 @@ class BlogTagsSitemap(Sitemap):
     def items(self):
         return taggers.objects.all()
 
-
-
-class CereminderSitemap(Sitemap):
-    changefreq = "daily"
-    priority = 0.7
-
-    def items(self):
-        return events.objects.all()
 
 
 

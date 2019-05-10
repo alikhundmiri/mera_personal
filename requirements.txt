@@ -8,10 +8,11 @@ celery==4.1.0
 certifi==2017.11.5
 chardet==3.0.4
 dj-database-url==0.4.2
-Django==1.10.6
+Django==2.2.1
 django-celery-beat==1.1.0
 django-celery-results==1.0.1
 django-crispy-forms==1.6.1
+django-filter==2.1.0
 django-hosts==2.0
 django-markdown-deux==1.0.5
 django-markdownx==2.0.21
@@ -39,6 +40,7 @@ requests==2.18.4
 requests-oauthlib==0.8.0
 s3transfer==0.1.10
 six==1.10.0
+sqlparse==0.3.0
 twython==3.6.0
 urllib3==1.22
 vine==1.1.4

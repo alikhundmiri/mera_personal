@@ -4,6 +4,8 @@ from .views import (
     resume,
 )
 
+app_name = "cv_db"
+
 urlpatterns = [
     url(r'^$', cv, name='cv'),
     url(r'^resume/', resume, name='resume'),
