@@ -42,7 +42,7 @@ urlpatterns = [
     url(r'^base', TemplateView.as_view(template_name='base_jan_2018.html'), name='base18'),
 
     # index page.
-    url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
+    url(r'^$', TemplateView.as_view(template_name='new_base.html'), name='home'),
     
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     url(r'^robots\.txt', include('robots.urls')),

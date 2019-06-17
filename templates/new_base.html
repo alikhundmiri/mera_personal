@@ -1,0 +1,188 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<meta charset="utf-8">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<meta name="description" content="Ali Khundmiri is a Social Media & Content Manager, And the Maker of Insta2blog and Youtube Pomodoro Timer.">
+
+	<meta name="author" content="Ali Khundmiri">
+
+	<meta name="keywords" content="Python, Django, Quora Ali Khundmiri, Insta2blog, insta to blog, revensours, Revenue Source, Youtube Pomodoro Timer, Ali Coder Maker, Indie Hacker, Indie Maker, Social Media Manager, Content Creator">
+
+	<meta name="apple-mobile-web-app-title" content="Ali Khundmiri">
+	<meta name="application-name" content="Ali Khundmiri">    
+	
+	<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+	<link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <!-- You can use Open Graph tags to customize link previews.
+    	Learn more: https://developers.facebook.com/docs/sharing/webmasters 
+    -->
+    <meta property="og:type"          content="website" />
+    <meta property="og:description"   content="Ali Khundmiri is a Social Media & Content Manager, And the Maker of Insta2blog and Youtube Pomodoro Timer." />
+
+
+    <title>{% block title %}
+    	Ali Khundmiri
+    {% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'lander/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'lander/css/business-frontpage.css' %}" rel="stylesheet">
+
+    <link href="{% static 'lander/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+    type="text/css">
+
+ 	<!-- Code to monitor website from google analytics -->
+    <script>
+    	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    	ga('create', 'UA-98290233-1', 'auto');
+    	ga('send', 'pageview');
+    </script>
+</head>
+
+<body>
+
+	<!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<div class="container">
+			<a class="navbar-brand" href="#">Start Bootstrap</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item active">
+						<a class="nav-link" href="#">Home
+							<span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Blog</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Review</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Maker</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Header -->
+	<header class="bg-primary py-5 mb-5">
+		<div class="container h-100">
+			<div class="row h-100 align-items-center">
+				<div class="col-lg-12">
+
+					<h1 class="display-4 text-white mt-5 mb-2"><br>Ali <b>Khundmiri</b></h1>
+					<p class="lead mb-5 text-white-50">Indie hacker | Social Media Manager | Content Creator</p>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<!-- Page Content -->
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-8 mb-5">
+				<h2>What We Do</h2>
+				<hr>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A deserunt neque tempore recusandae animi soluta quasi? Asperiores rem dolore eaque vel, porro, soluta unde debitis aliquam laboriosam. Repellat explicabo, maiores!</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis optio neque consectetur consequatur magni in nisi, natus beatae quidem quam odit commodi ducimus totam eum, alias, adipisci nesciunt voluptate. Voluptatum.</p>
+				<a class="btn btn-primary btn-lg" href="#">Call to Action &raquo;</a>
+			</div>
+			<div class="col-md-4 mb-5">
+<!-- 				<h2>Contact Us</h2>
+				<hr>
+				<address>
+					<strong>Start Bootstrap</strong>
+					<br>3481 Melrose Place
+					<br>Beverly Hills, CA 90210
+					<br>
+				</address>
+				<address>
+					<abbr title="Phone">P:</abbr>
+					(123) 456-7890
+					<br>
+					<abbr title="Email">E:</abbr>
+					<a href="mailto:#">name@example.com</a>
+				</address> -->
+			</div>
+		</div>
+		<!-- /.row -->
+
+		<div class="row">
+			<div class="col-md-4 mb-5">
+				<div class="card h-100">
+					<img class="card-img-top" src="http://placehold.it/300x200" alt="">
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+					</div>
+					<div class="card-footer">
+						<a href="#" class="btn btn-primary">Find Out More!</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 mb-5">
+				<div class="card h-100">
+					<img class="card-img-top" src="http://placehold.it/300x200" alt="">
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
+					</div>
+					<div class="card-footer">
+						<a href="#" class="btn btn-primary">Find Out More!</a>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 mb-5">
+				<div class="card h-100">
+					<img class="card-img-top" src="http://placehold.it/300x200" alt="">
+					<div class="card-body">
+						<h4 class="card-title">Card title</h4>
+						<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+					</div>
+					<div class="card-footer">
+						<a href="#" class="btn btn-primary">Find Out More!</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+	<!-- Footer -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Ali Khundmiri 2019</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+
+	<!-- Bootstrap core JavaScript -->
+	<script src="{% static 'lander/vendor/jquery/jquery.min.js' %}"></script>
+	<script src="{% static 'lander/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
