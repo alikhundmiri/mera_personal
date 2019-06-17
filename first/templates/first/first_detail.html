@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    {{ instance.title }} | {{ block.super }}
+{% endblock %}
+
+{% block head_extras %}
+    <link href="{% static 'css/video-size.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content_detail %}
+    <div style="margin-top:100px;"></div>
+
+    <div class="container">
+
+        <!-- Portfolio Item Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">{{ instance.title }}
+                    <small>{{ instance.get_type_work_display }}</small>
+                </h1>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Item Row -->
+        <div class="row">
+            <div class="col-md-8">
+                {% if instance.image %}
+                    <img class="img-responsive" src="{{ instance.image.url }}" alt="">
+                {% else %}
+                    <img class="img-responsive" src="{% static 'images/default_1.png' %}" alt="">
+                {% endif %}
+                <br>
+                <h3>Project Description</h3>
+                {% if instance.detail %}
+                    <p>{{ instance.detail }}</p>
+                {% else %}
+                    <p>The project <i>{{ instance.title }}</i> is being developed as {% if instance.type_work == 1 %}
+                        a website {% elif instance.type_work == 2 %}an android app {% else %} an iOS app {% endif %}for
+                        {% if instance.purpose == 1 %}personal use
+                        {% elif instance.purpose == 2 %}commercial purpose{% else %}a third party on Contract{% endif %}
+                        . The work is underway, and is expected to be pushed to production soon.<br>Various details about the project are
+                        provided below</p>
+                {% endif %}
+                <hr>
+            </div>
+
+            <div class="col-md-4">
+                <h3>Project Details</h3>
+                <ul>
+                    <li><b>Project Type : </b>{{ instance.get_type_work_display }}</li>
+                    <li><b>Project Role : </b>{{ instance.get_role_display }}</li>
+                    <li><b>Project Purpose : </b>{{ instance.get_purpose_display }}</li>
+                    {% if instance.detail %}
+                        <li><b>Project Completed : </b>{{ instance.created }}</li>
+                    {% else %}
+                        <li><b>Project Completion Expected: </b>
+                            {% if instance.created|date == instance.timestamp|date %}
+                                Soon!
+                                {% else %}{{ instance.created|timeuntil }}
+                            {% endif %}</li>
+                    {% endif %}
+                    {% if instance.item_url %}
+                        <li><b>Project URL : </b><a href="{{ instance.item_url }}">Check it out</a></li>
+
+                    {% endif %}
+                </ul>
+                <p>For further more details, please <a href="{% url 'contact' %}">contact</a> our developer.</p>
+                <hr>
+                {% if instance.youtube %}
+                    <h3>Project Video</h3>
+                    <div class="video-wrapper">
+                        <iframe src="https://www.youtube.com/embed/{{ instance.youtube }}" frameborder="0" allowfullscreen></iframe>
+                        <p>if video is not available, click <a href="https://www.youtube.com/watch?v={{ instance.youtube }}">here</a></p>
+                    </div>
+                    <hr>
+                {% endif %}
+                <p style="margin-left: 20px"><i></i></p>
+                <!-- Facebook share button code -->
+                <div
+                    style = "style="margin-left: 20px"
+                    class="fb-like"
+                    data-share="true"
+                    data-width="450"
+                    data-show-faces="true">
+                </div>
+                <!-- Facebook Share and Like -->
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-md-8">
+                <p style="margin-left: 20px; color: #808080"><i>Liked this? Share with the world!. You can also comment below, I do check these comments regularly!</i></p>
+            <!-- Disqus Comments -->
+            <div id="disqus_thread"></div>
+            <script>
+
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+            
+            var disqus_config = function () {
+            this.page.url = '{{ request.build_absolute_uri }}';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = '{{ instance.slug }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            };
+            
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://alikhundmiri.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </div>
+        <script id="dsq-count-scr" src="//alikhundmiri.disqus.com/count.js" async></script>
+
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+{% endblock %}

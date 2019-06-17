@@ -1,0 +1,99 @@
+{% extends "blog_base.html" %}
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+
+{% block head_property %}
+<meta property="og:url"           content="{{ request.build_absolute_uri }}" />
+<meta property="og:title"         content="Blogs by Ali Khundmiri of New life shoes"/>
+{% endblock %}
+
+
+{% block title %}
+Blogs | {{ block.super }}
+{% endblock %}
+{% block content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({% static 'blog/img/home-bg.jpg' %})">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="site-heading">
+					<h1>Blog</h1>
+					<span class="subheading">By Ali Khundmiri</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-md-10 mx-auto">
+
+			{% for blog in all_blogs %}
+			<div class="post-preview">
+				<a href="{{ blog.get_absolute_url }}">
+					<h2 class="post-title">
+						{{ blog.title }}
+					</h2>
+					<h3 class="post-subtitle">
+						{{blog.detail|markdown|truncatewords:20 }}
+					</h3>
+				</a>
+				<p class="post-meta pull-right"> 
+					{% if blog.timestamp <= blog.updated %}
+					Updated : {{ blog.updated|timesince }} ago
+					{% else %}
+					Added : {{ blog.timestamp|timesince }} ago
+					{% endif %}
+				</p>
+				<p class="post-meta">Posted by
+					{{ blog.user }} 
+				</p>
+
+				{% if blog.tags.all %}
+				<p class="post-meta">
+					
+					<a href="{% url 'blogs:all_tag' %}"><b> Tags: </b></a>
+					{% for tag in blog.tags.all %}
+					<a href="{{ tag.get_absolute_url }}"> &nbsp;{{ tag }} </a> 
+					{% endfor %}
+				</p>
+				{% endif %}
+
+			</div>
+			<hr>
+			{% endfor %}
+
+			{% if all_blogs %}
+
+			<div class="pagination col-lg-12">
+				<ul class="step-links pager">
+					{% if all_blogs.has_previous %}
+					<li><a href="?{{ page_request_var }}=
+
+						{{ all_blogs.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Newer</a>
+					</li>
+					{% endif %}
+
+					<span class="current">
+						Page {{ all_blogs.number }} of {{ all_blogs.paginator.num_pages }}.
+					</span>
+
+					{% if all_blogs.has_next %}
+					<li><a href="?{{ page_request_var }}=
+						{{ all_blogs.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Older</a>
+					</li>
+					{% endif %}
+				</ul>
+			</div>
+
+
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}
+    Oops !! | {{ block.super }}
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <br><br><br><br>
+                <h1 class="">Oops!! <br><br><i class="fa fa-chain-broken fa-5x"></i><br><br><br>
+                    <small>There seems to be some problem with our servers<br>
+                        <br><br></small>
+                </h1>
+                <p>Please refresh to load the contents of this page. <br><br><br> If that does'nt work, either I am a
+                    talentless
+                    person, or the servers are damages, <b>Really</b> bad!. </p>
+                <hr class="star-primary">
+            </div>
+        </div>
+    </div>
+{% endblock %}
