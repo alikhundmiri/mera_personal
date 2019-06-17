@@ -1,0 +1,94 @@
+{% extends "blog_base.html" %}
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+
+{% block head_property %}
+<meta property="og:url"           content="{{ request.build_absolute_uri }}" />
+<meta property="og:title"         content="Blogs by Ali Khundmiri of New life shoes"/>
+{% endblock %}
+
+
+{% block title %}
+Tag : {{this_tag}} | {{ block.super }}
+{% endblock %}
+{% block content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({% static 'blog/img/home-bg.jpg' %})">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="site-heading">
+					<h1>tag : {{this_tag}}</h1>
+
+					{% if this_tag.description %}
+					<span class="subheading">{{ this_tag.description }}</span>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-md-10 mx-auto">
+
+			{% if required_blogs %}
+			{% for blog in required_blogs %}
+
+			<div class="post-preview">
+				<a href="{{ blog.get_absolute_url }}">
+					<h4 class="post-title">
+						{{forloop.counter}} : {{ blog.title }}
+					</h4>
+					<p class="post-meta">
+						By {{ blog.user }}
+						| {% if blog.timestamp <= blog.updated %}
+						Updated : {{ blog.updated|timesince }} ago
+						{% else %}
+						Added : {{ blog.timestamp|timesince }} ago
+						{% endif %}
+						{% if blog.tags.all %}
+						| {{blog.tags.all|length}} tags.
+						{% endif %}
+					</p>
+				</a>
+			</div>
+			<hr>
+			{% endfor %}
+
+			<div class="row">
+				<div class="pagination col-lg-12">
+					<ul class="step-links pager">
+						{% if all_blogs.has_previous %}
+						<li><a href="?{{ page_request_var }}=
+
+							{{ all_blogs.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Newer</a>
+						</li>
+						{% endif %}
+
+						<span class="current">
+							Page {{ all_blogs.number }} of {{ all_blogs.paginator.num_pages }}.
+						</span>
+
+						{% if all_blogs.has_next %}
+						<li><a href="?{{ page_request_var }}=
+							{{ all_blogs.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Older</a>
+						</li>
+						{% endif %}
+					</ul>
+				</div>
+			</div>
+			{% else %}
+			<div class="row">
+				<h3>Oh no! There are no blogs tagged to this tag.</h3>
+			</div>
+			{% endif %}
+
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "blog_base.html" %}
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+
+{% block head_property %}
+<meta property="og:url"           content="{{ request.build_absolute_uri }}" />
+
+{% if this_blog.image %}
+<meta property="og:image"         content="{{ this_blog.image.url }}" />
+{% endif %}
+
+<meta property="og:title"         content="{{ this_blog.title }}"/>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!--     <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-7313204296797742",
+        enable_page_level_ads: true
+      });
+    </script>
+-->
+{% endblock %}
+
+
+{% block title %}
+{{ this_blog.title|truncatewords:5 }} | {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({% static 'blog/img/home-bg.jpg' %})">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="post-heading">
+					<h1>{{ this_blog.title }}</h1>
+					<!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
+					<span class="meta">Posted by : {{ this_blog.user.get_full_name }}
+					</span>
+					<span>
+						{% if this_blog.timestamp <= this_blog.updated %}
+						Last Updated : {{ this_blog.updated }}
+						{% else %}
+						Added : {{ this_blog.timestamp }}
+						{% endif %}
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+
+
+<!-- {% if this_blog.tags %}
+Tags: 
+{% for tag in this_blog.tags.all %}
+<a href="{{ tag.get_absolute_url }}">{{ tag.tag_name }}</a> 
+
+{% endfor %}
+{% endif %}
+-->
+
+
+
+<!-- Post Content -->
+<article>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				{% if this_blog.image %}
+				<br>
+				<center>
+					<img src="{{ this_blog.image.url }}" style='width: 100%' class="img-responsive">
+				</center>
+				<br>
+				{% endif %}
+
+				{{ this_blog.detail|markdown|safe|linebreaks }}
+
+
+
+				<div id="disqus_thread"></div>
+				<script>
+
+        /**
+        *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+        
+        var disqus_config = function () {
+        this.page.url = '{{ request.build_absolute_uri }}';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '{{ this_blog.slug }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    
+        (function() { // DON'T EDIT BELOW THIS LINE
+        	var d = document, s = d.createElement('script');
+        	s.src = 'https://alikhundmiri.disqus.com/embed.js';
+        	s.setAttribute('data-timestamp', +new Date());
+        	(d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+</div>
+</article>
+
+
+
+
+{% endblock %}

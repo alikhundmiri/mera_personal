@@ -1,0 +1,69 @@
+{% extends "blog_base.html" %}
+{% load staticfiles %}
+{% load markdown_deux_tags %}
+
+{% block head_property %}
+<meta property="og:url"           content="{{ request.build_absolute_uri }}" />
+<meta property="og:title"         content="Tags | {{ block.super }}"/>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+	(adsbygoogle = window.adsbygoogle || []).push({
+		google_ad_client: "ca-pub-7313204296797742",
+		enable_page_level_ads: true
+	});
+</script>
+{% endblock %}
+
+
+{% block title %}
+Tags | {{ block.super }}
+{% endblock %}
+{% block content %}
+
+<!-- Page Header -->
+<header class="masthead" style="background-image: url({% static 'blog/img/home-bg.jpg' %})">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-10 mx-auto">
+				<div class="site-heading">
+					<h1>Tags</h1>
+					<span class="subheading">connected to all of the blogs on this site.</span>
+					<p><b>Total Tags :</b>{{ all_tags.all.count }}</p> <br>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<!-- Main Content -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-8 col-md-10 mx-auto">
+
+			{% if all_tags %}
+			{% for tag in all_tags.all %}
+			
+			<div class="post-preview">
+				<a href="{{ tag.get_absolute_url }}">
+					<h4 class="post-title">
+						{{ tag }}
+					</h4>
+					<p class="post-meta">
+						{{ tag.description }}
+					</p>
+				</a>
+			</div>
+			<hr>
+
+			{% endfor %}
+			{% else %}
+			<div class="row">
+				<h3>Oh no! There are no tags yet!</h3>
+			</div>
+			{% endif %}
+
+		</div>
+	</div>
+</div>
+{% endblock %}
