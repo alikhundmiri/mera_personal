@@ -28,6 +28,8 @@ SECRET_KEY = 'ggk*3^m@sgffn2*@#tb1r9)m%7&cgv&!-kr@91=irpzjp#w1f0'
 # DEBUG = False
 DEBUG = True
 
+note = 'At this point, I am moving from python 3.5 to 3.7'
+
 ALLOWED_HOSTS = [
 "https://guarded-cliffs-97404.herokuapp.com/",
 "guarded-cliffs-97404.herokuapp.com",
