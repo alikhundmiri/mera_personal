@@ -6,77 +6,66 @@ Ali's Custom redirects | {{ block.super }}
 
 {% block head_extras %}
 <style type="text/css">
-.cards-redirect{
-	word-wrap: break-word;
-	text-align: center;
+	.cards-redirect{
+		word-wrap: break-word;
+		text-align: center;
 
-}
+	}
 </style>
 {% endblock %}
 
 {% block content_detail %}
 <div style="margin-top:100px;"></div>
 
-<div class="">
+<div class="container">
 	<div class="col">
 		<div class="row">
-			<h1>Custom Redirects
+			<h1>Website Links   </h1>
+
+			<h1>
 				{% if request.user.is_superuser %}
-				<a type="button" class="btn btn-primary btn-sm" href="{% url 'customredirect:redirect_new' %}">New</a>
+				<a role="button" class="btn btn-primary" href="{% url 'customredirect:redirect_new' %}">Create</a>
 				{% endif %}
 			</h1>
 			<!-- <h1 class=""><small><a href="">New Link</a></small></h1> -->
-
 		</div>
 	</div>
-
-
 	<div class="col">
 		<div class="row">
 			<p>Currently there {{ all_links|pluralize:"is,are" }} {{all_links.count}} link{{ all_links|pluralize }}:</p>
-			<div class="row cards-redirect">
-				{% for link in all_links %}	
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<div class="caption">
-							<h4>{{link.title}}</h4>
-							<a href="{{ link.redirect_user }}" target="_blank">
-								{{ request.build_absolute_uri }}{{link.slug}}
-							</a>
-							<p>to</p>
-							<a>{{link.redirect_url}}</a>
-							<p class="lead">
-								<small>
-									Use : {{link.count}}
-								</small>
-							</p>
-						</div>
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-
-			<!-- <table class="table table-striped">
+			<table class="table">
 				<thead>
 					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Redirect Link</th>
-						<th scope="col">Destination Link</th>
-						<th scope="col">count</th>
+						<th scope="col">Website</th>
+						{% if request.user.is_superuser %}
+						<th scope="col">Click count</th>
+						{% endif %}
+						<th scope="col">Link</th>
 					</tr>
 				</thead>
 				<tbody>
-					{% for link in all_links %}
+					{% for link in all_links %}	
 					<tr>
-						<td><a href="{{ link.redirect_user }}" target="_blank">{{ request.build_absolute_uri }}{{link.slug}}</a></td>
-						<td>{{link.redirect_url}}</td>
-						<td>{{link.count}}</td>
+						<td>
+							{{link.title}}<br>
+							<span style="color: gray; font-size: 10px;">
+								{{ request.build_absolute_uri }}{{link.slug}}
+							</span>
+						</td>
+						{% if request.user.is_superuser %}
+						<td>{{link.count}} clicks</td>
+						{% endif %}
+						<td>							
+							<a class="btn btn-primary" href="{{ link.redirect_user }}" role="button" target="_blank">
+								<!-- {{ request.build_absolute_uri }}{{link.slug}} -->
+								Open
+							</a>
+						</td>
 					</tr>
 					{% endfor %}
 				</tbody>
-			</table> -->
+			</table>
 		</div>		
 	</div>
-</div>
 </div>
 {% endblock %}
