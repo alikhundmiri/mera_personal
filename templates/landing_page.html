@@ -1,95 +1,166 @@
-{% extends 'new_base.html' %}
-{% load crispy_forms_tags %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}
-Welcome, I am {{ block.super }}
-{% endblock %}
+<head>
 
-{% block head_extras %}
-{{ form.media }}
-{% endblock %}
+    <meta charset="utf-8">
 
-{% block content %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<div class="row">
-    <div class="col-md-8 mb-5">
-        <h1 class="thick_title">About Me</h1>
-        <p>Hi,</p>
-        <p>My name is Ali, and I am A Self thought Web developer and Social Media Manager. You can find me accross the internet on <a href="https://instagram.com/alicodermaker">Instagram</a>, <a href="https://facebook.com/alicodermaker">Facebook</a>, <a href="https:github.com/alikhundmiri">Github</a> and <a href="https://twitter.com/alicodermaker">Twitter</a>.</p>
-        <p>Currently I am working With Ardizen Artworks as a social Media Manager. In my free time, and After workhours I work on my Side projects and Make Things like, Retrew, <a href="http://Insta2blog.com">Insta2blog.com</a>, and Youtube Pomodoro Timer.</p>
-        <br>
-        <h1 class="thick_title">Hire Me</h1>
-        <p>
-            I am always looking for Cool People to work with. You can contact me on Instagram for quick reply.
-        </p>
-        <!-- <a class="btn btn-outline-primary btn-lg" href="#">Get Updates from Everything I make!</a> -->
-    </div>
-    <!--
-    <div class="col-md-4 mb-5">
-        <h2>Contact Us</h2>
-            <hr>
-            <address>
-                <strong>Start Bootstrap</strong>
-                <br>3481 Melrose Place
-                <br>Beverly Hills, CA 90210
-                <br>
-            </address>
-            <address>
-                <abbr title="Phone">P:</abbr>
-                (123) 456-7890
-                <br>
-                <abbr title="Email">E:</abbr>
-                <a href="mailto:#">name@example.com</a>
-            </address> 
-    </div>
--->
-</div>
-<!-- /.row -->
-<div class="row">
-    <div class="col-md-12 mb-5">
-        <h1 class="thick_title">Check out these</h1>
-        <div class="row">
-            
-            <div class="col-md-4 mb-5">        
-                <div class="card h-100">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Find Out More!</a>
-                    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Ali Khundmiri is a Social Media & Content Manager, And the Maker of Insta2blog and Youtube Pomodoro Timer.">
+
+    <meta name="author" content="Ali Khundmiri">
+
+    <meta name="keywords" content="Python, Django, Quora Ali Khundmiri, Insta2blog, insta to blog, revensours, Revenue Source, Youtube Pomodoro Timer, Ali Coder Maker, Indie Hacker, Indie Maker, Social Media Manager, Content Creator">
+
+    <meta name="apple-mobile-web-app-title" content="Ali Khundmiri">
+    <meta name="application-name" content="Ali Khundmiri">    
+    
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    <!-- You can use Open Graph tags to customize link previews.
+        Learn more: https://developers.facebook.com/docs/sharing/webmasters 
+    -->
+    <meta property="og:type"          content="website" />
+    <meta property="og:description"   content="Ali Khundmiri is a Social Media & Content Manager, And the Maker of Insta2blog and Youtube Pomodoro Timer." />
+
+
+    <title>{% block title %}
+     Journey of an Indian Tech Indie Maker | Ali Khundmiri 
+ {% endblock %}</title>
+
+ {% block head_extras %}
+ {{ form.media }}
+ {% endblock %}
+ <!-- Bootstrap core CSS -->
+ <link href="{% static 'lander/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+ <!-- Custom styles for this template -->
+ <link href="{% static 'lander/css/business-frontpage.css' %}" rel="stylesheet">
+
+ <link href="{% static 'lander/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+ <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,800,900" rel="stylesheet" type="text/css">
+ <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+ type="text/css">
+
+
+ <style type="text/css">
+    h1{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 900;
+        font-size: 100px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+    h2{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
+        font-size: 50px; 
+        padding-top: 10px; 
+        padding-bottom: 10px
+    }
+    p{
+        font-family: 'Lato';
+        font-weight: 400;
+        font-size: 20px; padding-top: 5px;
+    }
+    /* https://bootstrapcreative.com/can-adjust-text-size-bootstrap-responsive-design/ */
+    /* Small devices (landscape phones, 544px and up) */
+    @media (min-width: 544px) {  
+      h1 {font-size:1.5rem;} /*1rem = 16px*/
+  }
+
+  /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+  @media (min-width: 768px) {  
+      h1 {font-size:2rem;} /*1rem = 16px*/
+  }
+
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) { 
+      h1 {font-size:2.5rem;} /*1rem = 16px*/
+  }
+
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {  
+      h1 {font-size:3rem;} /*1rem = 16px*/    
+  }
+</style>
+<!-- Code to monitor website from google analytics -->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-98290233-1', 'auto');
+    ga('send', 'pageview');
+</script>
+</head>
+
+<body>
+    <!-- Navigation -->
+    {% include 'extras/2019/navbar.html' %}
+
+    <!-- Header -->
+    <!-- <header class="bg-primary py-5 mb-5">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 text-white mt-5 mb-2"><br>Ali <b>Khundmiri</b></h1>
+                    <p class="lead mb-5 text-white-50">Indie Maker | Social Media Manager | Content Creator</p>
                 </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Find Out More!</a>
-                    </div>
+                {% comment %}
+                <div class="col-lg-6">
+                    <img style="height: 400px" src="{% static 'images/me_no_background.png' %}">
                 </div>
-            </div>
-            <div class="col-md-4 mb-5">
-                <div class="card h-100">
-                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-                    <div class="card-body">
-                        <h4 class="card-title">Card title</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Find Out More!</a>
-                    </div>
-                </div>
+                {% endcomment %}
             </div>
         </div>
-        
-    </div>
-</div>
-<!-- /.row -->
+    </header> -->
 
-{% endblock %}
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8 offset-md-2 mb-5">
+                <span style="margin-top: 50px"><p>
+                </p></span>
+
+                <h1>Hello, My name is Ali Khundmiri</h1>
+                <h2>Known in the Indiemaker Community as AliCoderMaker</h2>
+
+                <p>My name is Ali, and I am A Self thought Web developer and Social Media Manager. You can find me accross the internet on <a href="https://instagram.com/alicodermaker">Instagram</a>, <a href="https://facebook.com/alicodermaker">Facebook</a>, <a href="https:github.com/alikhundmiri">Github</a> and <a href="https://twitter.com/alicodermaker">Twitter</a>.</p>
+                <p>Currently I am working With Ardizen Artworks as a social Media Manager. In my free time, and After workhours I work on my Side projects and Make Things like, Retrew, <a href="http://Insta2blog.com">Insta2blog.com</a>, and Youtube Pomodoro Timer.</p>
+                <br>
+                <h2 class="thick_title">Hire Me</h2>
+                <p>
+                    I am always looking for Cool People to work with. You can contact me on Instagram for quick reply.
+                </p>
+                <a class="btn btn-outline-primary btn-lg" href="#">Get Updates from Everything I make!</a>
+            </div>
+
+            <div class="col-md-8 offset-md-2 mb-5">
+                <h2 class="thick_title">Support Me</h2>
+                <p>
+                    All of the content on my channel and website is free. I'd love it if you could buy me a coffee to show your support to me, my channel, and my content.
+                </p>
+                <style>.bmc-button img{height: 34px !important;width: 35px !important;margin-bottom: 1px !important;box-shadow: none !important;border: none !important;vertical-align: middle !important;}.bmc-button{padding: 7px 10px 7px 10px !important;line-height: 35px !important;height:51px !important;min-width:217px !important;text-decoration: none !important;display:inline-flex !important;color:#ffffff !important;background-color:#BD5FFF !important;border-radius: 5px !important;border: 1px solid transparent !important;padding: 7px 10px 7px 10px !important;font-size: 22px !important;letter-spacing: 0.6px !important;box-shadow: 0px 1px 2px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;margin: 0 auto !important;font-family:'Cookie', cursive !important;-webkit-box-sizing: border-box !important;box-sizing: border-box !important;-o-transition: 0.3s all linear !important;-webkit-transition: 0.3s all linear !important;-moz-transition: 0.3s all linear !important;-ms-transition: 0.3s all linear !important;transition: 0.3s all linear !important;}.bmc-button:hover, .bmc-button:active, .bmc-button:focus {-webkit-box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;text-decoration: none !important;box-shadow: 0px 1px 2px 2px rgba(190, 190, 190, 0.5) !important;opacity: 0.85 !important;color:#ffffff !important;}</style><link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet"><a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/alicodermaker"><img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee"><span style="margin-left:15px;font-size:28px !important;">Buy me a coffee</span></a>
+            </div>
+
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+    
+    <!-- Footer -->
+    {% include 'extras/2019/footer.html' %}
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'lander/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'lander/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

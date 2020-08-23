@@ -37,7 +37,8 @@ ALLOWED_HOSTS = [
 "www.alikhundmiri.com", 
 "0.0.0.0",
 "192.168.1.33",
-'172.20.10.3'
+'172.20.10.3',
+'127.0.0.1',
 ]
 
 # Application definition

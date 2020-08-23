@@ -28,6 +28,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/', include('blogs.urls', namespace="blogs")),
     path('contact/', TemplateView.as_view(template_name='contact.html'), name='contact'),
+    path('choose-a-career/', TemplateView.as_view(template_name='choose-a-career.html'), name='choose-a-career'),
+
     path('cv/', include('cv_db.urls', namespace="document")),
 
     path('resume/', RedirectView.as_view(url='https://personal-website-ali-1.s3.amazonaws.com/static/download/pdf/Ali_resume.pdf'), name='resume'),
@@ -37,15 +39,18 @@ urlpatterns = [
     path('links/', include('customredirect.urls', namespace="customredirect")),
 
     # Urls from Accounts. Login, Logout, Register
-    path('ogin/',login_view, name='login' ),
-    path('ogout/', logout_view, name='logout'),
-    path('egister/', register_view, name='register'),
+    path('login/',login_view, name='login' ),
+    path('logout/', logout_view, name='logout'),
+    path('register/', register_view, name='register'),
 
 
-    path('base', TemplateView.as_view(template_name='base_jan_2018.html'), name='base18'),
+    path('base', TemplateView.as_view(template_name='base_2019.html'), name='base18'),
 
     # index page.
+    # path('', TemplateView.as_view(template_name='landing_page.html'), name='home'),
+    # path('', TemplateView.as_view(template_name='landing_page.html'), name='home'),
     path('', TemplateView.as_view(template_name='landing_page.html'), name='home'),
+    # path('', TemplateView.as_view(template_name='cover_page.html'), name='home'),
     
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', include('robots.urls')),
