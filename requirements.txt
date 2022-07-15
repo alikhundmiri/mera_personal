@@ -10,7 +10,7 @@ chardet==3.0.4
 dj-database-url==0.4.2
 Django==2.2.1
 django-celery-beat==1.1.0
-django-celery-results==1.0.1
+django-celery-results==2.4.0
 django-crispy-forms==1.7.2
 django-filter==2.1.0
 django-hosts==2.0
